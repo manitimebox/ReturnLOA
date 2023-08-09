@@ -1,0 +1,64 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZSB_RLOA_EL/$metadata">
+        <edmx:Include Namespace="cds_zsd_rloa_el"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+           <Annotations Target="cds_zsd_rloa_el.cds_zsd_rloa_el_Entities/ZCVIEW_RLOA_EL">
+                <Annotation Term="Org.OData.Capabilities.V1.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"> </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Path="IsElAdminUpdate"> </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                             <Record>
+                                    <PropertyValue Property="RestrictedProperties">
+                                            <Collection>
+                                                     <Record>
+                                                            <PropertyValue Property="NavigationProperty" NavigationPropertyPath="DraftAdministrativeData" />
+                                                            <PropertyValue Property="FilterRestrictions">
+                                                                   <Record>
+                                                                          <PropertyValue Property="Filterable" Bool="false" />
+                                                                   </Record>
+                                                            </PropertyValue>
+                                                     </Record>
+                                            </Collection>
+                                    </PropertyValue>
+                             </Record>
+                      </Annotation>
+                      <Annotation Term="Common.SideEffects" Qualifier="GlobalSideEffect">
+                            <Record>
+                                <PropertyValue Property="SourceProperties">
+                                    <Collection>
+                                        <PropertyPath>Employeenumber</PropertyPath>
+                                    </Collection>
+                                </PropertyValue>
+                                <PropertyValue Property="TargetProperties">
+                                    <Collection>
+                                        <String>Approverinfo</String>
+                                    </Collection>
+                                </PropertyValue>                        
+                            </Record>
+                        </Annotation>  
+                        </Annotations> 
+          
+        </Schema>
+    </edmx:DataServices>
+    </edmx:Edmx>
