@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://gd1/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='ECC110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://gd1/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='ECC110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://gd1/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='ECC110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://gd1/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='ECC110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://gd1/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='ECC110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://gd1/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='ECC110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://gd1/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='ECC110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://gd1/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='ECC110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://gd1/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='ECC110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zsd_rloa_hr" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="I_DraftAdministrativeDataType" sap:label="Draft Administration Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="DraftEntityType"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Draft (Technical ID)"/>
+                <Property Name="DraftEntityType" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Draft Entity ID"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="CreatedByUserDescription" sap:label="Draft Created By"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="LastChangedByUserDescription" sap:label="Draft Last Changed By"/>
+                <Property Name="DraftAccessType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Draft Access Type"/>
+                <Property Name="ProcessingStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft In Process Since"/>
+                <Property Name="InProcessByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="InProcessByUserDescription" sap:label="Draft In Process By"/>
+                <Property Name="DraftIsKeptByUser" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Is Kept By User"/>
+                <Property Name="EnqueueStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Locked Since"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Created By Me"/>
+                <Property Name="DraftIsLastChangedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Last Changed By Me"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft In Process By Me"/>
+                <Property Name="CreatedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Created By (Description)"/>
+                <Property Name="LastChangedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Last Changed By (Description)"/>
+                <Property Name="InProcessByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft In Process By (Description)"/>
+            </EntityType>
+            <EntityType Name="ZCVIEW_RLOA_HRType" sap:label="C View for RLOA HR" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="RequestUuid"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Edit_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Submitrequest_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestUuid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Requestid" Type="Edm.Int64" sap:label="Request ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Requestdescription" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Requestedby" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:text="RequestorName" sap:label="Submitted By" sap:quickinfo="Personnel Number" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="RequestorName" Type="Edm.String" MaxLength="40" sap:label="Employee/app.name" sap:quickinfo="Formatted Name of Employee or Applicant" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="RequestedbyUserid" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="System ID" sap:quickinfo="Communication Identification/Number"/>
+                <Property Name="RequestedbyMgrid" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="System ID" sap:quickinfo="Communication Identification/Number"/>
+                <Property Name="EssRequestedUsrid" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="System ID" sap:quickinfo="Communication Identification/Number"/>
+                <Property Name="SelfRequest" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+                <Property Name="Employeenumber" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:text="EmpName" sap:label="Step 1:Chosen Employee" sap:quickinfo="Personnel Number" sap:value-list="standard"/>
+                <Property Name="EmpName" Type="Edm.String" MaxLength="40" sap:label="Employee/app.name" sap:quickinfo="Formatted Name of Employee or Applicant" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Requeststatus" Type="Edm.String" MaxLength="30" sap:text="StatusText" sap:label="Request Status" sap:value-list="fixed-values"/>
+                <Property Name="StatusText" Type="Edm.String" MaxLength="30" sap:label="Status Text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Statuscriticality" Type="Edm.Byte"/>
+                <Property Name="Approverinfo" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:text="ApproverName" sap:label="Step 4: Choose Approver" sap:quickinfo="Line supervisor/manager is chosen.Choose alternate approver if required" sap:value-list="standard"/>
+                <Property Name="ApproverName" Type="Edm.String" MaxLength="40" sap:label="Employee/app.name" sap:quickinfo="Formatted Name of Employee or Applicant" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Submittedon" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Submitted On" sap:quickinfo="Start Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Approvedon" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Approved/Rejected On" sap:quickinfo="End Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Costcenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Workcontract" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Work contract" sap:quickinfo="Work Contract" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Contracttype" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Contract Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Positionid" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Position" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Personnelarea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Personnel area" sap:quickinfo="Personnel Area" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Subarea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Personnel subarea" sap:quickinfo="Personnel Subarea" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Employeegroup" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Employee group" sap:quickinfo="Employee Group" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Employeesubgroup" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Employee subgroup" sap:quickinfo="Employee Subgroup" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Orgunit" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Organizational unit" sap:quickinfo="Organizational Unit" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Persadmin" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Pers.administrator" sap:quickinfo="Administrator for HR Master Data" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Action" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Step2: Action" sap:quickinfo="Action Type" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Reason" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Step3 :Reason For Change" sap:quickinfo="Reason for Action" sap:creatable="false" sap:updatable="false" sap:value-list="fixed-values"/>
+                <Property Name="PreviousReason" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Current LOA - Reason For Change" sap:quickinfo="Reason for Action" sap:creatable="false" sap:updatable="false" sap:value-list="fixed-values"/>
+                <Property Name="PreviousAction" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Current LOA - Action" sap:quickinfo="Action Type" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="PreviousEffectiveFrom" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Current LOA - Start Date" sap:quickinfo="Start Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PreviousHrComments" Type="Edm.String" MaxLength="1024" sap:label="Current LOA - HR Comments" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Leaveofabsenceurl" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Leave Of Absence -Portal Link" sap:quickinfo="30 Characters" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HrUrl" Type="Edm.String" MaxLength="1000" sap:label="ESS LOA link"/>
+                <Property Name="PayrollUrl" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="ElUrl" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="UrlHidden" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="URL Hidden indicator" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="Effectivestartdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Step4: Change Effective From" sap:quickinfo="Start Date"/>
+                <Property Name="Effectiveenddate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="End Date"/>
+                <Property Name="Hiredate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Startdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date"/>
+                <Property Name="Enddate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="End Date"/>
+                <Property Name="Firstdaymissed" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date"/>
+                <Property Name="Senoritydate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Pensioneligibilitydate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date"/>
+                <Property Name="Firstworkingdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date"/>
+                <Property Name="Vacationeligibilitydate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Probationdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Updatable" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Updatable" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="IsManagerUpdate" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+                <Property Name="IsHrUpdate" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+                <Property Name="RoeCode" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
+                <Property Name="IsElAdminUpdate" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+                <Property Name="IsPayrollUpdate" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+                <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/>
+                <Property Name="LocalLastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/>
+                <Property Name="RequestLevel" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:label="Number" sap:quickinfo="Num1"/>
+                <Property Name="ApproverSysid1" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="System ID" sap:quickinfo="Communication Identification/Number"/>
+                <Property Name="ApproverSysid2" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="System ID" sap:quickinfo="Communication Identification/Number"/>
+                <Property Name="IsBenefitsReviewd" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+                <Property Name="BenefitsComments" Type="Edm.String" MaxLength="200"/>
+                <Property Name="IsPayrollReviewed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+                <Property Name="PayrollComments" Type="Edm.String" MaxLength="200"/>
+                <Property Name="HrApproverSysid" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="System ID" sap:quickinfo="Communication Identification/Number"/>
+                <Property Name="BenefitsApproverSysid" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="System ID" sap:quickinfo="Communication Identification/Number"/>
+                <Property Name="PayrollApproverSysid" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="System ID" sap:quickinfo="Communication Identification/Number"/>
+                <Property Name="Comments" Type="Edm.String" MaxLength="1024" sap:label="Step6: Enter your comments(Optional)"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_zsd_rloa_hr.assoc_79EC97553820B11D8E10987185BB5387" FromRole="FromRole_assoc_79EC97553820B11D8E10987185BB5387" ToRole="ToRole_assoc_79EC97553820B11D8E10987185BB5387"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="cds_zsd_rloa_hr.assoc_1AC10A0796628965F375C64D95142266" FromRole="FromRole_assoc_1AC10A0796628965F375C64D95142266" ToRole="ToRole_assoc_1AC10A0796628965F375C64D95142266"/>
+            </EntityType>
+            <EntityType Name="ZIREASON_RLOA_VHType" sap:label="Return LOA VH for Reason" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Massn"/>
+                    <PropertyRef Name="Massg"/>
+                </Key>
+                <Property Name="Massn" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Action Type"/>
+                <Property Name="Massg" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="Massg_Text" sap:label="Reason for Action"/>
+                <Property Name="Massg_Text" Type="Edm.String" MaxLength="30" sap:label="Reason f.action text" sap:quickinfo="Name of reason for action" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="ZIREASON_VHType" sap:label="Value Help for reason" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Massn"/>
+                    <PropertyRef Name="Massg"/>
+                </Key>
+                <Property Name="Massn" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Action Type"/>
+                <Property Name="Massg" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="Massg_Text" sap:label="Reason for Action"/>
+                <Property Name="Massg_Text" Type="Edm.String" MaxLength="30" sap:label="Reason f.action text" sap:quickinfo="Name of reason for action" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="ZIVIEW_STATUS_TBLType" sap:label="I View for status table" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Zstatuscode"/>
+                </Key>
+                <Property Name="Zstatuscode" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Status Code" sap:quickinfo="Status Text"/>
+                <Property Name="ZstatusCodeTxt" Type="Edm.String" MaxLength="30" sap:label="Status Text"/>
+            </EntityType>
+            <EntityType Name="ZI_APPROVER_VHType" sap:label="Value Help for Approver selection" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:text="Pernr_Text" sap:label="Personnel Number"/>
+                <Property Name="Pernr_Text" Type="Edm.String" MaxLength="40" sap:label="Employee/app.name" sap:quickinfo="Formatted Name of Employee or Applicant" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PA" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Personnel area" sap:quickinfo="Personnel Area"/>
+            </EntityType>
+            <EntityType Name="ZI_REQUESTEDFOR_VHType" sap:label="Value Help for Requested for" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Endda"/>
+                    <PropertyRef Name="Begda"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:text="Pernr_Text" sap:label="Personnel Number"/>
+                <Property Name="Pernr_Text" Type="Edm.String" MaxLength="40" sap:label="Employee/app.name" sap:quickinfo="Formatted Name of Employee or Applicant" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Endda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="End Date"/>
+                <Property Name="Begda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Start Date"/>
+            </EntityType>
+            <EntityType Name="ZZIACTION_VHType" sap:label="Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Massn"/>
+                </Key>
+                <Property Name="Massn" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="Massn_Text" sap:label="Action Type"/>
+                <Property Name="Massn_Text" Type="Edm.String" MaxLength="30" sap:label="Name of action type" sap:quickinfo="Name of Action Type" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <ComplexType Name="DummyFunctionImportResult">
+                <Property Name="IsInvalid" Type="Edm.Boolean" sap:label="TRUE"/>
+            </ComplexType>
+            <Association Name="assoc_1AC10A0796628965F375C64D95142266" sap:content-version="1">
+                <End Type="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType" Multiplicity="1" Role="FromRole_assoc_1AC10A0796628965F375C64D95142266"/>
+                <End Type="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType" Multiplicity="0..1" Role="ToRole_assoc_1AC10A0796628965F375C64D95142266"/>
+            </Association>
+            <Association Name="assoc_79EC97553820B11D8E10987185BB5387" sap:content-version="1">
+                <End Type="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType" Multiplicity="1" Role="FromRole_assoc_79EC97553820B11D8E10987185BB5387"/>
+                <End Type="cds_zsd_rloa_hr.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_79EC97553820B11D8E10987185BB5387"/>
+            </Association>
+            <EntityContainer Name="cds_zsd_rloa_hr_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_DraftAdministrativeData" EntityType="cds_zsd_rloa_hr.I_DraftAdministrativeDataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCVIEW_RLOA_HR" EntityType="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType" sap:content-version="1"/>
+                <EntitySet Name="ZIREASON_RLOA_VH" EntityType="cds_zsd_rloa_hr.ZIREASON_RLOA_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZIREASON_VH" EntityType="cds_zsd_rloa_hr.ZIREASON_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZIVIEW_STATUS_TBL" EntityType="cds_zsd_rloa_hr.ZIVIEW_STATUS_TBLType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_APPROVER_VH" EntityType="cds_zsd_rloa_hr.ZI_APPROVER_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_REQUESTEDFOR_VH" EntityType="cds_zsd_rloa_hr.ZI_REQUESTEDFOR_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZZIACTION_VH" EntityType="cds_zsd_rloa_hr.ZZIACTION_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_1AC10A0796628965F375C64D95142266" Association="cds_zsd_rloa_hr.assoc_1AC10A0796628965F375C64D95142266" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCVIEW_RLOA_HR" Role="FromRole_assoc_1AC10A0796628965F375C64D95142266"/>
+                    <End EntitySet="ZCVIEW_RLOA_HR" Role="ToRole_assoc_1AC10A0796628965F375C64D95142266"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_79EC97553820B11D8E10987185BB5387" Association="cds_zsd_rloa_hr.assoc_79EC97553820B11D8E10987185BB5387" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCVIEW_RLOA_HR" Role="FromRole_assoc_79EC97553820B11D8E10987185BB5387"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_79EC97553820B11D8E10987185BB5387"/>
+                </AssociationSet>
+                <FunctionImport Name="ZCVIEW_RLOA_HRActivate" ReturnType="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType" EntitySet="ZCVIEW_RLOA_HR" m:HttpMethod="POST" sap:action-for="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType">
+                    <Parameter Name="RequestUuid" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="ZCVIEW_RLOA_HRDiscard" ReturnType="cds_zsd_rloa_hr.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType">
+                    <Parameter Name="RequestUuid" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="ZCVIEW_RLOA_HREdit" ReturnType="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType" EntitySet="ZCVIEW_RLOA_HR" m:HttpMethod="POST" sap:action-for="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType" sap:applicable-path="Edit_ac">
+                    <Parameter Name="RequestUuid" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZCVIEW_RLOA_HRPrepare" ReturnType="cds_zsd_rloa_hr.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType">
+                    <Parameter Name="RequestUuid" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="Submitrequest" ReturnType="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType" EntitySet="ZCVIEW_RLOA_HR" m:HttpMethod="POST" sap:action-for="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType" sap:applicable-path="Submitrequest_ac">
+                    <Parameter Name="RequestUuid" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotations Target="cds_zsd_rloa_hr.cds_zsd_rloa_hr_Entities/ZCVIEW_RLOA_HR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftRoot">
+                    <Record>
+                        <PropertyValue Property="ActivationAction" String="cds_zsd_rloa_hr.cds_zsd_rloa_hr_Entities/ZCVIEW_RLOA_HRActivate"/>
+                        <PropertyValue Property="DiscardAction" String="cds_zsd_rloa_hr.cds_zsd_rloa_hr_Entities/ZCVIEW_RLOA_HRDiscard"/>
+                        <PropertyValue Property="EditAction" String="cds_zsd_rloa_hr.cds_zsd_rloa_hr_Entities/ZCVIEW_RLOA_HREdit"/>
+                        <PropertyValue Property="PreparationAction" String="cds_zsd_rloa_hr.cds_zsd_rloa_hr_Entities/ZCVIEW_RLOA_HRPrepare"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>Submitrequest_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="HrUrl"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="PayrollUrl"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="ElUrl"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>Submitrequest_ac</PropertyPath>
+                                <PropertyPath>HrUrl</PropertyPath>
+                                <PropertyPath>PayrollUrl</PropertyPath>
+                                <PropertyPath>ElUrl</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType/Requestedby" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_REQUESTEDFOR_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Requestedby"/>
+                                    <PropertyValue Property="ValueListProperty" String="Pernr"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Pernr_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Endda"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Begda"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType/Employeenumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_REQUESTEDFOR_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Employeenumber"/>
+                                    <PropertyValue Property="ValueListProperty" String="Pernr"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Pernr_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Endda"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Begda"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType/Requeststatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZIVIEW_STATUS_TBL"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Requeststatus"/>
+                                    <PropertyValue Property="ValueListProperty" String="Zstatuscode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZstatusCodeTxt"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType/Approverinfo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_APPROVER_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Approverinfo"/>
+                                    <PropertyValue Property="ValueListProperty" String="Pernr"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Personnelarea"/>
+                                    <PropertyValue Property="ValueListProperty" String="PA"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Pernr_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType/Action" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZZIACTION_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Action"/>
+                                    <PropertyValue Property="ValueListProperty" String="Massn"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Massn_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType/Reason" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZIREASON_RLOA_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Reason"/>
+                                    <PropertyValue Property="ValueListProperty" String="Massg"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Action"/>
+                                    <PropertyValue Property="ValueListProperty" String="Massn"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Massg_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType/PreviousReason" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZIREASON_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PreviousReason"/>
+                                    <PropertyValue Property="ValueListProperty" String="Massg"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PreviousAction"/>
+                                    <PropertyValue Property="ValueListProperty" String="Massn"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Massg_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_rloa_hr.ZCVIEW_RLOA_HRType/PreviousAction" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZZIACTION_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PreviousAction"/>
+                                    <PropertyValue Property="ValueListProperty" String="Massn"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Massn_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_rloa_hr.cds_zsd_rloa_hr_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://gd1/sap/opu/odata/sap/ZSB_RLOA_HR/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://gd1/sap/opu/odata/sap/ZSB_RLOA_HR/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
